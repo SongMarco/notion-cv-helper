@@ -29,16 +29,19 @@ Claude Code의 Skill/Agent 체계와 Notion MCP를 활용하여 CV(이력서)를
 
 ### 4. 환경변수 설정
 
+Claude Code에서 `/cv-init` 커맨드로 간편하게 설정한다:
+
+```
+/cv-init NOTION_TOKEN=ntn_your_token_here NOTION_CV_PAGE_URL=https://www.notion.so/Your-CV-abc123def456
+```
+
+URL에서 Page ID를 자동 추출하여 `.env` 파일을 생성한다.
+
+또는 직접 `.env` 파일을 생성할 수도 있다:
+
 ```bash
-export NOTION_TOKEN="ntn_your_token_here"
-export NOTION_CV_PAGE_ID="your_page_id_here"
-```
-
-또는 프로젝트 루트에 `.env` 파일을 생성한다:
-
-```
-NOTION_TOKEN=ntn_your_token_here
-NOTION_CV_PAGE_ID=your_page_id_here
+cp .env.example .env
+# .env 파일을 열어 값 입력
 ```
 
 ### 5. 프로젝트 Clone
@@ -51,6 +54,14 @@ cd cv-helper
 ## 사용법
 
 `cv-helper` 디렉토리에서 Claude Code를 실행한다.
+
+### 초기 설정
+
+```
+/cv-init NOTION_TOKEN=ntn_xxxxx NOTION_CV_PAGE_URL=https://www.notion.so/My-CV-abc123def456
+```
+
+Notion 토큰과 CV 페이지 URL을 인자로 전달하면 `.env` 파일을 자동 생성한다.
 
 ### CV 조회
 
@@ -97,6 +108,7 @@ cv-helper/
 ├── .claude/
 │   ├── CLAUDE.md                    # 프로젝트 지시사항
 │   ├── skills/
+│   │   ├── cv-init/SKILL.md         # 초기 설정 Skill
 │   │   ├── cv-read/SKILL.md         # CV 조회 Skill
 │   │   └── cv-update/SKILL.md       # CV 업데이트 Skill
 │   └── agents/
