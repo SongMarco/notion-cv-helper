@@ -21,7 +21,9 @@ allowed-tools: mcp__notion__*
 ### 1단계: 현재 CV 파악
 
 - 환경변수 `NOTION_CV_PAGE_ID`로 CV 페이지를 조회한다
-- `retrieve_block_children`로 전체 블록을 가져와 섹션별로 파싱한다
+- `retrieve_block_children`로 전체 블록을 가져온다
+- 모든 Heading 블록(`heading_1`, `heading_2`, `heading_3`)을 동적으로 탐색하여 섹션 구조를 파악한다
+- 고정된 섹션 목록을 가정하지 않는다 - 실제 페이지 구조를 그대로 인식한다
 - 각 섹션의 Block ID를 기록해 둔다
 
 ### 2단계: 분석 및 제안
@@ -56,7 +58,7 @@ allowed-tools: mcp__notion__*
 ## Block 조작 원칙
 
 - 페이지 전체를 덮어쓰지 않는다
-- Heading 2 블록을 섹션 앵커로 인식하고 유지한다
+- 모든 레벨의 Heading 블록을 섹션 앵커로 인식하고 유지한다
 - 새 항목은 해당 섹션 마지막에 `append_block_children`으로 추가한다
 - 기존 항목 수정 시 해당 Block ID로 `update_block`을 호출한다
 - 변경 전 반드시 사용자 확인을 거친다

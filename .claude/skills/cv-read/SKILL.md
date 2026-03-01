@@ -18,9 +18,9 @@ Notion CV 페이지를 읽어 구조화된 형태로 표시한다.
    - 중첩된 블록이 있으면 재귀적으로 하위 블록도 조회한다.
 
 3. 블록을 섹션별로 파싱한다.
-   - Heading 2 블록(`heading_2`)을 섹션 구분자로 사용한다.
-   - 각 섹션의 **Block ID를 함께 기록**한다.
-   - 지원하는 섹션: Summary, Work Experience, Projects, Skills, Education, Certifications, Languages
+   - 모든 Heading 블록(`heading_1`, `heading_2`, `heading_3`)을 섹션 구분자로 인식한다.
+   - 고정된 섹션 목록에 의존하지 않는다 - 페이지에 존재하는 Heading을 그대로 섹션으로 취급한다.
+   - 각 섹션의 **Heading 레벨, 제목, Block ID를 함께 기록**한다.
 
 4. 결과를 구조화된 마크다운으로 출력한다.
    - 각 섹션 제목 옆에 Block ID를 주석으로 표기한다 (디버깅/업데이트 참조용).
@@ -29,13 +29,13 @@ Notion CV 페이지를 읽어 구조화된 형태로 표시한다.
 ## 출력 형식 예시
 
 ```markdown
-## Summary
+## 자기소개
 
 <!-- block_id: abc123 -->
 
 풀스택 개발자로서 5년간 ...
 
-## Work Experience
+## 경력
 
 <!-- block_id: def456 -->
 
@@ -44,13 +44,21 @@ Notion CV 페이지를 읽어 구조화된 형태로 표시한다.
 - 역할: Senior Developer
 - 주요 성과: ...
 
-## Skills
+### 이전 회사 (2019.01 - 2022.02)
+
+<!-- block_id: uvw012 -->
+
+- ...
+
+## 기술 스택
 
 <!-- block_id: ghi789 -->
 
 - **Languages**: TypeScript, Python, Go
-- **Frameworks**: NestJS, React, FastAPI
 ```
+
+Heading의 이름, 레벨, 개수는 실제 페이지 구조에 따라 달라진다.
+위는 예시일 뿐이며, 실제 출력은 페이지의 Heading을 그대로 반영한다.
 
 ## 에러 처리
 

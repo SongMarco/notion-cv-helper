@@ -83,20 +83,12 @@ Claude Code에서 `cv-assistant` 에이전트를 호출하면 대화형으로 CV
 
 ## CV 페이지 구조
 
-CV 페이지는 **Heading 2 블록을 섹션 앵커**로 사용한다.
-다음 헤딩 제목을 유지해야 Skill/Agent가 정확하게 동작한다:
+CV 페이지의 섹션 구조에 특별한 제약은 없다.
+Skill/Agent는 페이지 내 **모든 Heading 블록(H1/H2/H3)을 동적으로 탐색**하여 섹션으로 인식한다.
 
-```
-## Summary
-## Work Experience
-## Projects
-## Skills
-## Education
-## Certifications
-## Languages
-```
-
-섹션 순서는 자유롭게 변경 가능하나, 헤딩 제목은 위 목록과 일치해야 한다.
+- 섹션 이름, 순서, 개수를 자유롭게 구성할 수 있다
+- 한국어, 영어 등 어떤 언어의 Heading이든 인식한다
+- Heading이 없는 페이지도 전체를 하나의 블록 리스트로 처리한다
 
 ## 기술 구조
 

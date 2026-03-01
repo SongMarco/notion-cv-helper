@@ -26,18 +26,12 @@ Notion에 작성된 CV(이력서)를 Claude Code의 Skill/Agent를 통해 관리
 
 ## Notion CV 페이지 구조 규칙
 
-CV 페이지는 **Heading 2 블록을 섹션 앵커**로 사용한다.
-AI가 정확한 위치에 내용을 추가/수정하려면 다음 헤딩 제목을 유지해야 한다:
+CV 페이지의 섹션 구조는 **고정되어 있지 않다**.
+Skill/Agent는 페이지 내 Heading 블록(`heading_1`, `heading_2`, `heading_3`)을 동적으로 탐색하여 섹션을 인식한다.
 
-```
-## Summary
-## Work Experience
-## Projects
-## Skills
-## Education
-## Certifications
-## Languages
-```
+- 사용자가 어떤 이름의 Heading을 사용하든 그대로 섹션으로 인식한다
+- Heading의 레벨(H1/H2/H3)도 자동으로 감지한다
+- 섹션 순서, 개수, 이름에 제약이 없다
 
 ### Block ID 기반 업데이트 원칙
 
