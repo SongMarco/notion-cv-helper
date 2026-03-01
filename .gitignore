@@ -1,6 +1,7 @@
 # Environment variables (NOTION_TOKEN 등 민감 정보 보호)
 .env
 .env.*
+!.env.example
 
 # OS
 .DS_Store
