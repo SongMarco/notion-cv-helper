@@ -13,7 +13,7 @@ Notion에 작성된 CV(이력서)를 Claude Code에서 조회, 수정, 대화형
 ### 2. 플러그인 설치
 
 ```
-/plugin install notion-cv@songmarco-plugins
+/plugin install notion-cv
 ```
 
 ### 3. 초기 설정
