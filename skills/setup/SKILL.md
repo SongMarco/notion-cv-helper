@@ -67,7 +67,7 @@ allowed-tools: mcp__notion__*, Write, Read, Bash
 ```
 ## Notion Integration 생성 방법
 
-1. https://www.notion.so/my-integrations 에서 새 Integration을 생성
+1. https://www.notion.so/profile/integrations/internal 에서 새 Integration을 생성
 2. 권한: Read content, Update content, Insert content 체크
 3. 생성 후 토큰(ntn_ 접두사)을 복사
 4. CV 페이지에서 ... > Connections > 생성한 Integration 추가

@@ -62,27 +62,11 @@ Notion CV 페이지를 읽어 섹션별 구조화된 마크다운으로 출력�
 
 ## Notion Integration 생성
 
-1. [Notion Integrations](https://www.notion.so/my-integrations)에서 새 Integration을 생성한다
+1. [Notion Integrations](https://www.notion.so/profile/integrations/internal)에서 새 Integration을 생성한다
 2. 이름: `CV Helper` (자유롭게 설정)
 3. 권한: **Read content**, **Update content**, **Insert content** 체크
 4. 생성 후 표시되는 토큰(`ntn_` 접두사)을 복사한다
 5. Notion에서 CV 페이지를 열고 우측 상단 `...` > `Connections` > 생성한 Integration을 추가한다
-
-## CV 페이지 구조
-
-CV 페이지의 섹션 구조에 제약은 없다.
-플러그인은 페이지 내 **모든 Heading 블록(H1/H2/H3)을 동적으로 탐색**하여 섹션으로 인식한다.
-
-- 섹션 이름, 순서, 개수를 자유롭게 구성할 수 있다
-- 한국어, 영어 등 어떤 언어의 Heading이든 인식한다
-- 업데이트 시 페이지 전체를 덮어쓰지 않고, 개별 블록 단위로 조작한다
-
-## 직접 설치 (개발자용)
-
-```bash
-git clone https://github.com/SongMarco/notion-cv-helper.git
-claude --plugin-dir ./notion-cv-helper
-```
 
 ## 라이선스
 
