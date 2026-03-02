@@ -1,13 +1,13 @@
 ---
 name: setup
-description: Notion 토큰과 CV 페이지 URL을 인자로 받아 .env 파일을 생성한다
+description: Notion 토큰과 CV 페이지 URL을 인자로 받아 .env 및 .mcp.json 파일을 생성한다
 argument-hint: NOTION_TOKEN=<토큰> NOTION_CV_PAGE_URL=<URL>
 allowed-tools: mcp__notion__*, Write, Read
 ---
 
 # 초기 설정
 
-인자로 전달받은 Notion 토큰과 CV 페이지 URL로 `.env` 파일을 생성한다.
+인자로 전달받은 Notion 토큰과 CV 페이지 URL로 `.env`와 `.mcp.json` 파일을 생성한다.
 
 ## 사용법
 
@@ -43,8 +43,24 @@ allowed-tools: mcp__notion__*, Write, Read
    NOTION_CV_PAGE_ID=abc123def456...
    ```
 
-5. 설정 완료 메시지를 출력한다.
-   - ".env 파일이 생성되었습니다."
+5. `.mcp.json` 파일을 생성하거나 업데이트한다.
+   - 기존 `.mcp.json`이 있으면 Read로 읽어서 `mcpServers`에 `notion` 항목을 추가(병합)한다.
+   - 기존 `.mcp.json`이 없으면 새로 생성한다.
+   - 기존에 `notion` 서버가 이미 설정되어 있으면 덮어쓴다.
+   ```json
+   {
+     "mcpServers": {
+       "notion": {
+         "command": "sh",
+         "args": ["-c", "set -a && [ -f \"$PWD/.env\" ] && . \"$PWD/.env\" && set +a && exec npx -y @notionhq/notion-mcp-server"],
+         "env": {}
+       }
+     }
+   }
+   ```
+
+6. 설정 완료 메시지를 출력한다.
+   - ".env 파일과 .mcp.json 파일이 생성되었습니다."
    - "Notion에서 CV 페이지에 Integration 연결을 확인해 주세요."
      - 페이지 우측 상단 "..." > "Connections" > 생성한 Integration 추가
    - "`claude --continue`로 세션을 이어가면 Notion 연결이 활성화됩니다."
