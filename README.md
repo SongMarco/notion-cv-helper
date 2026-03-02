@@ -32,9 +32,9 @@ claude --plugin-dir ./cv-helper
    ```
    /notion-cv:setup NOTION_TOKEN=ntn_your_token_here NOTION_CV_PAGE_URL=https://www.notion.so/Your-CV-abc123def456
    ```
-   URL에서 Page ID를 자동 추출하여 `.env`와 `.mcp.json` 파일을 생성한다.
+   Notion MCP 서버를 `claude mcp add`로 등록하고, Page ID를 `.env`에 저장한다.
 
-2. `claude --continue`로 세션을 재시작한다 (`.mcp.json`의 Notion MCP 서버 활성화).
+2. `claude --continue`로 세션을 재시작한다 (Notion MCP 서버 활성화).
 
 3. `/notion-cv:read`로 CV를 조회하여 동작을 확인한다.
 

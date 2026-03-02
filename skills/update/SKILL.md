@@ -62,6 +62,6 @@ allowed-tools: mcp__notion__*, Read
 ## 에러 처리
 
 - 섹션을 찾을 수 없음: 현재 페이지에서 발견된 Heading 목록을 표시하여 사용자가 정확한 섹션명을 선택하도록 안내
-- MCP 연결 실패 / Notion API 호출 불가: "`.mcp.json`에 Notion MCP 설정이 있는지 확인하세요. `/notion-cv:setup`을 다시 실행하거나, `claude --continue`로 세션을 재시작하세요." 출력
+- MCP 연결 실패 / Notion API 호출 불가: "`claude mcp list`로 Notion MCP 서버가 등록되어 있는지 확인하세요. 등록되지 않았다면 `/notion-cv:setup`을 실행하고, `claude --continue`로 세션을 재시작하세요." 출력
 - Block ID 조회 실패: `/notion-cv:read`를 먼저 실행하도록 안내
 - API 오류: 에러 메시지를 사용자에게 전달하고, 부분 변경이 있었다면 현재 상태를 출력

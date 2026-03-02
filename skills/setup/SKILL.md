@@ -1,13 +1,13 @@
 ---
 name: setup
-description: Notion 토큰과 CV 페이지 URL을 인자로 받아 .env 및 .mcp.json 파일을 생성한다
+description: Notion 토큰과 CV 페이지 URL을 인자로 받아 MCP 서버를 등록하고 .env 파일을 생성한다
 argument-hint: NOTION_TOKEN=<토큰> NOTION_CV_PAGE_URL=<URL>
-allowed-tools: mcp__notion__*, Write, Read
+allowed-tools: mcp__notion__*, Write, Read, Bash
 ---
 
 # 초기 설정
 
-인자로 전달받은 Notion 토큰과 CV 페이지 URL로 `.env`와 `.mcp.json` 파일을 생성한다.
+인자로 전달받은 Notion 토큰과 CV 페이지 URL로 MCP 서버를 등록하고 `.env` 파일을 생성한다.
 
 ## 사용법
 
@@ -36,34 +36,27 @@ allowed-tools: mcp__notion__*, Write, Read
 
 4. `.env` 파일을 생성한다.
    ```
-   # Notion Integration Token
-   NOTION_TOKEN=ntn_xxxxx
-
    # Notion CV Page ID
    NOTION_CV_PAGE_ID=abc123def456...
    ```
+   - 토큰은 `.env`에 저장하지 않는다 (MCP 설정에서 관리).
 
-5. `.mcp.json` 파일을 생성하거나 업데이트한다.
-   - 기존 `.mcp.json`이 있으면 Read로 읽어서 `mcpServers`에 `notion` 항목을 추가(병합)한다.
-   - 기존 `.mcp.json`이 없으면 새로 생성한다.
-   - 기존에 `notion` 서버가 이미 설정되어 있으면 덮어쓴다.
-   ```json
-   {
-     "mcpServers": {
-       "notion": {
-         "command": "sh",
-         "args": ["-c", "set -a && [ -f \"$PWD/.env\" ] && . \"$PWD/.env\" && set +a && exec npx -y @notionhq/notion-mcp-server"],
-         "env": {}
-       }
-     }
-   }
-   ```
+5. `claude mcp add` 명령어로 Notion MCP 서버를 등록한다.
+   - Bash 도구로 다음 명령어를 실행한다:
+     ```bash
+     claude mcp add -e NOTION_TOKEN=<토큰값> notion -- npx -y @notionhq/notion-mcp-server
+     ```
+   - 이미 `notion` MCP 서버가 등록되어 있으면 먼저 제거 후 재등록한다:
+     ```bash
+     claude mcp remove notion 2>/dev/null; claude mcp add -e NOTION_TOKEN=<토큰값> notion -- npx -y @notionhq/notion-mcp-server
+     ```
+   - 등록 후 `claude mcp list`로 정상 등록 여부를 확인한다.
 
 6. 설정 완료 메시지를 출력한다.
-   - ".env 파일과 .mcp.json 파일이 생성되었습니다."
+   - "Notion MCP 서버가 등록되고 .env 파일이 생성되었습니다."
    - "Notion에서 CV 페이지에 Integration 연결을 확인해 주세요."
      - 페이지 우측 상단 "..." > "Connections" > 생성한 Integration 추가
-   - "`claude --continue`로 세션을 이어가면 Notion 연결이 활성화됩니다."
+   - "`claude --continue`로 세션을 이어가면 Notion MCP 서버가 활성화됩니다."
    - "`/notion-cv:read`로 CV를 조회할 수 있습니다."
 
 ## Notion Integration 미생성 시 안내
