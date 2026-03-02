@@ -1,5 +1,5 @@
 ---
-name: cv-read
+name: read
 description: Notion에서 CV를 조회하여 섹션별 구조화된 마크다운으로 출력한다
 allowed-tools: mcp__notion__*
 ---
@@ -11,7 +11,7 @@ Notion CV 페이지를 읽어 구조화된 형태로 표시한다.
 ## 워크플로우
 
 1. 환경변수 `NOTION_CV_PAGE_ID`에서 CV 페이지 ID를 확인한다.
-   - 설정되지 않은 경우: 사용자에게 설정 방법을 안내하고 중단한다.
+   - 설정되지 않은 경우: "`NOTION_CV_PAGE_ID` 환경변수가 설정되지 않았습니다. `/ncv:setup`을 실행하여 설정 방법을 확인하세요." 출력 후 중단한다.
 
 2. Notion MCP를 통해 CV 페이지의 블록 목록을 조회한다.
    - `retrieve_block_children` API로 페이지의 모든 블록을 가져온다.
@@ -62,6 +62,6 @@ Heading의 이름, 레벨, 개수는 실제 페이지 구조에 따라 달라진
 
 ## 에러 처리
 
-- `NOTION_CV_PAGE_ID` 미설정: "환경변수 NOTION_CV_PAGE_ID를 설정해 주세요." 출력
-- 페이지 접근 불가: "Notion Integration에 CV 페이지 접근 권한을 부여해 주세요." 출력
+- `NOTION_CV_PAGE_ID` 미설정: "`NOTION_CV_PAGE_ID` 환경변수를 설정해 주세요. `/ncv:setup`을 실행하면 설정 방법을 안내합니다." 출력
+- 페이지 접근 불가: "Notion Integration에 CV 페이지 접근 권한을 부여해 주세요. `/ncv:setup`에서 설정 방법을 확인할 수 있습니다." 출력
 - API 오류: 에러 메시지를 사용자에게 전달

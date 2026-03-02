@@ -21,6 +21,7 @@ allowed-tools: mcp__notion__*
 ### 1단계: 현재 CV 파악
 
 - 환경변수 `NOTION_CV_PAGE_ID`로 CV 페이지를 조회한다
+  - 미설정 시: `/ncv:setup`을 실행하도록 안내한다
 - `retrieve_block_children`로 전체 블록을 가져온다
 - 모든 Heading 블록(`heading_1`, `heading_2`, `heading_3`)을 동적으로 탐색하여 섹션 구조를 파악한다
 - 고정된 섹션 목록을 가정하지 않는다 - 실제 페이지 구조를 그대로 인식한다
@@ -46,6 +47,7 @@ allowed-tools: mcp__notion__*
 - 변경사항을 사용자에게 미리 보여주고 승인을 받는다
 - Block ID 기반으로 정확한 위치에 내용을 추가/수정한다
 - 변경 후 결과를 확인하여 사용자에게 보여준다
+- `/ncv:read`로 전체 CV를 다시 조회하여 최종 상태를 확인할 수 있음을 안내한다
 
 ## CV 작성 가이드라인
 
@@ -62,3 +64,10 @@ allowed-tools: mcp__notion__*
 - 새 항목은 해당 섹션 마지막에 `append_block_children`으로 추가한다
 - 기존 항목 수정 시 해당 Block ID로 `update_block`을 호출한다
 - 변경 전 반드시 사용자 확인을 거친다
+
+## 보안
+
+- `NOTION_TOKEN` 값을 대화 출력에 절대 노출하지 않는다
+- 환경변수 값을 직접 출력하지 않는다 - 설정 여부만 확인한다
+- Block ID 등 내부 식별자는 사용자에게 보여줄 때 참조 목적으로만 표시한다
+- API 에러 메시지에 토큰 정보가 포함된 경우 마스킹하여 전달한다

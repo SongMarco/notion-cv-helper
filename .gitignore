@@ -1,7 +1,6 @@
-# Environment variables (NOTION_TOKEN 등 민감 정보 보호)
+# Environment variables
 .env
 .env.*
-!.env.example
 
 # OS
 .DS_Store
@@ -14,5 +13,5 @@ Thumbs.db
 .vscode/
 .idea/
 
-# Node (향후 확장 시)
+# Node (MCP 서버 실행 시)
 node_modules/

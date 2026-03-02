@@ -1,5 +1,5 @@
 ---
-name: cv-update
+name: update
 description: 사용자가 전달한 내용으로 Notion CV의 특정 섹션을 업데이트한다
 argument-hint: <업데이트할 내용 또는 섹션명>
 allowed-tools: mcp__notion__*
@@ -16,7 +16,7 @@ allowed-tools: mcp__notion__*
    - 업데이트 내용 추출
 
 2. 환경변수 `NOTION_CV_PAGE_ID`에서 CV 페이지 ID를 확인한다.
-   - 설정되지 않은 경우: 사용자에게 설정 방법을 안내하고 중단한다.
+   - 설정되지 않은 경우: "`NOTION_CV_PAGE_ID` 환경변수가 설정되지 않았습니다. `/ncv:setup`을 실행하여 설정 방법을 확인하세요." 출력 후 중단한다.
 
 3. Notion MCP를 통해 현재 CV 페이지의 블록을 조회한다.
    - `retrieve_block_children`로 전체 블록 목록을 가져온다.
@@ -46,9 +46,9 @@ allowed-tools: mcp__notion__*
 ## 사용 예시
 
 ```
-/cv-update Skills 섹션에 Rust 추가
-/cv-update Work Experience에 새 회사 추가: Anthropic, 2025.01 - 현재, AI Engineer
-/cv-update Summary를 "시니어 백엔드 개발자"로 수정
+/ncv:update Skills 섹션에 Rust 추가
+/ncv:update Work Experience에 새 회사 추가: Anthropic, 2025.01 - 현재, AI Engineer
+/ncv:update Summary를 "시니어 백엔드 개발자"로 수정
 ```
 
 ## Block 조작 원칙
@@ -62,5 +62,5 @@ allowed-tools: mcp__notion__*
 ## 에러 처리
 
 - 섹션을 찾을 수 없음: 현재 페이지에서 발견된 Heading 목록을 표시하여 사용자가 정확한 섹션명을 선택하도록 안내
-- Block ID 조회 실패: `/cv-read`를 먼저 실행하도록 안내
+- Block ID 조회 실패: `/ncv:read`를 먼저 실행하도록 안내
 - API 오류: 에러 메시지를 사용자에게 전달하고, 부분 변경이 있었다면 현재 상태를 출력

@@ -1,9 +1,11 @@
 {
   "mcpServers": {
     "notion": {
-      "command": "sh",
-      "args": ["-c", "set -a && . \"$PWD/.env\" && set +a && exec npx -y @notionhq/notion-mcp-server"],
-      "env": {}
+      "command": "npx",
+      "args": ["-y", "@notionhq/notion-mcp-server"],
+      "env": {
+        "NOTION_TOKEN": "${NOTION_TOKEN}"
+      }
     }
   }
 }
