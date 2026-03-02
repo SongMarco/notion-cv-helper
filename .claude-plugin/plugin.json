@@ -10,6 +10,5 @@
   "homepage": "https://github.com/SongMarco/notion-cv-helper",
   "license": "MIT",
   "keywords": ["cv", "resume", "notion", "career"],
-  "skills": "./skills/",
-  "agents": "./agents/"
+  "skills": "./skills/"
 }
