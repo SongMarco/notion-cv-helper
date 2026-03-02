@@ -1,5 +1,5 @@
 {
-  "name": "ncv",
+  "name": "notion-cv",
   "version": "1.0.0",
   "description": "Notion에 작성된 CV(이력서)를 Claude Code에서 관리하는 플러그인. 조회, 수정, 대화형 개선을 지원한다.",
   "author": {

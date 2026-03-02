@@ -16,7 +16,7 @@ allowed-tools: mcp__notion__*, Read
    - 업데이트 내용 추출
 
 2. `.env` 파일에서 `NOTION_CV_PAGE_ID` 값을 읽는다.
-   - `.env` 파일이 없거나 `NOTION_CV_PAGE_ID`가 없는 경우: "`.env` 파일에 `NOTION_CV_PAGE_ID`가 설정되지 않았습니다. `/ncv:setup`을 실행하여 초기 설정을 완료하세요." 출력 후 중단한다.
+   - `.env` 파일이 없거나 `NOTION_CV_PAGE_ID`가 없는 경우: "`.env` 파일에 `NOTION_CV_PAGE_ID`가 설정되지 않았습니다. `/notion-cv:setup`을 실행하여 초기 설정을 완료하세요." 출력 후 중단한다.
 
 3. Notion MCP를 통해 현재 CV 페이지의 블록을 조회한다.
    - `retrieve_block_children`로 전체 블록 목록을 가져온다.
@@ -46,9 +46,9 @@ allowed-tools: mcp__notion__*, Read
 ## 사용 예시
 
 ```
-/ncv:update Skills 섹션에 Rust 추가
-/ncv:update Work Experience에 새 회사 추가: Anthropic, 2025.01 - 현재, AI Engineer
-/ncv:update Summary를 "시니어 백엔드 개발자"로 수정
+/notion-cv:update Skills 섹션에 Rust 추가
+/notion-cv:update Work Experience에 새 회사 추가: Anthropic, 2025.01 - 현재, AI Engineer
+/notion-cv:update Summary를 "시니어 백엔드 개발자"로 수정
 ```
 
 ## Block 조작 원칙
@@ -62,5 +62,5 @@ allowed-tools: mcp__notion__*, Read
 ## 에러 처리
 
 - 섹션을 찾을 수 없음: 현재 페이지에서 발견된 Heading 목록을 표시하여 사용자가 정확한 섹션명을 선택하도록 안내
-- Block ID 조회 실패: `/ncv:read`를 먼저 실행하도록 안내
+- Block ID 조회 실패: `/notion-cv:read`를 먼저 실행하도록 안내
 - API 오류: 에러 메시지를 사용자에게 전달하고, 부분 변경이 있었다면 현재 상태를 출력

@@ -1,4 +1,4 @@
-# Notion CV Helper (ncv)
+# Notion CV Helper (notion-cv)
 
 Notion에 작성된 CV(이력서)를 Claude Code에서 관리하는 플러그인.
 조회, 수정, 대화형 개선을 지원한다.
@@ -14,7 +14,7 @@ Notion에 작성된 CV(이력서)를 Claude Code에서 관리하는 플러그인
 ### 마켓플레이스에서 설치
 
 ```bash
-claude plugin install ncv --marketplace songmarco-plugins
+claude plugin install notion-cv --marketplace songmarco-plugins
 ```
 
 ### 직접 설치 (개발자용)
@@ -26,10 +26,10 @@ claude --plugin-dir ./cv-helper
 
 ## 초기 설정
 
-플러그인 설치 후 `/ncv:setup`으로 Notion 토큰과 CV 페이지를 설정한다:
+플러그인 설치 후 `/notion-cv:setup`으로 Notion 토큰과 CV 페이지를 설정한다:
 
 ```
-/ncv:setup NOTION_TOKEN=ntn_your_token_here NOTION_CV_PAGE_URL=https://www.notion.so/Your-CV-abc123def456
+/notion-cv:setup NOTION_TOKEN=ntn_your_token_here NOTION_CV_PAGE_URL=https://www.notion.so/Your-CV-abc123def456
 ```
 
 URL에서 Page ID를 자동 추출하여 `.env` 파일을 생성한다.
@@ -51,7 +51,7 @@ URL에서 Page ID를 자동 추출하여 `.env` 파일을 생성한다.
 ### CV 조회
 
 ```
-/ncv:read
+/notion-cv:read
 ```
 
 Notion CV 페이지를 읽어 섹션별 구조화된 마크다운으로 출력한다.
@@ -60,16 +60,16 @@ Notion CV 페이지를 읽어 섹션별 구조화된 마크다운으로 출력�
 ### CV 업데이트
 
 ```
-/ncv:update Skills 섹션에 Rust 추가
-/ncv:update Work Experience에 새 회사 추가: Anthropic, 2025.01 - 현재, AI Engineer
-/ncv:update Summary를 "시니어 백엔드 개발자"로 수정
+/notion-cv:update Skills 섹션에 Rust 추가
+/notion-cv:update Work Experience에 새 회사 추가: Anthropic, 2025.01 - 현재, AI Engineer
+/notion-cv:update Summary를 "시니어 백엔드 개발자"로 수정
 ```
 
 특정 섹션을 대상으로 블록 단위 수정을 수행한다.
 
 ### CV Assistant 에이전트
 
-`ncv:cv-assistant` 에이전트를 호출하면 대화형으로 CV를 개선할 수 있다.
+`notion-cv:cv-assistant` 에이전트를 호출하면 대화형으로 CV를 개선할 수 있다.
 
 - 현재 CV를 분석하고 개선점을 제안
 - 질문을 통해 경력, 스킬, 프로젝트 정보를 수집
@@ -90,14 +90,14 @@ CV 페이지의 섹션 구조에 제약은 없다.
 이전 버전(`.claude/` 기반)에서 플러그인으로 전환하는 경우:
 
 1. **플러그인 설치**: 위 [설치](#설치) 섹션을 따른다
-2. **초기 설정 재실행**: `/ncv:setup`으로 토큰과 페이지 URL을 다시 설정한다
+2. **초기 설정 재실행**: `/notion-cv:setup`으로 토큰과 페이지 URL을 다시 설정한다
 3. **커맨드 변경**:
    | 이전 | 현재 |
    |------|------|
-   | `/cv-init` | `/ncv:setup` |
-   | `/cv-read` | `/ncv:read` |
-   | `/cv-update` | `/ncv:update` |
-   | `cv-assistant` 에이전트 | `ncv:cv-assistant` 에이전트 |
+   | `/cv-init` | `/notion-cv:setup` |
+   | `/cv-read` | `/notion-cv:read` |
+   | `/cv-update` | `/notion-cv:update` |
+   | `cv-assistant` 에이전트 | `notion-cv:cv-assistant` 에이전트 |
 4. **기존 파일 정리**: `.claude/` 디렉토리는 더 이상 필요하지 않다
 
 ## 라이선스

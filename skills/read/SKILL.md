@@ -11,7 +11,7 @@ Notion CV 페이지를 읽어 구조화된 형태로 표시한다.
 ## 워크플로우
 
 1. `.env` 파일에서 `NOTION_CV_PAGE_ID` 값을 읽는다.
-   - `.env` 파일이 없거나 `NOTION_CV_PAGE_ID`가 없는 경우: "`.env` 파일에 `NOTION_CV_PAGE_ID`가 설정되지 않았습니다. `/ncv:setup`을 실행하여 초기 설정을 완료하세요." 출력 후 중단한다.
+   - `.env` 파일이 없거나 `NOTION_CV_PAGE_ID`가 없는 경우: "`.env` 파일에 `NOTION_CV_PAGE_ID`가 설정되지 않았습니다. `/notion-cv:setup`을 실행하여 초기 설정을 완료하세요." 출력 후 중단한다.
 
 2. Notion MCP를 통해 CV 페이지의 블록 목록을 조회한다.
    - `retrieve_block_children` API로 페이지의 모든 블록을 가져온다.
@@ -62,6 +62,6 @@ Heading의 이름, 레벨, 개수는 실제 페이지 구조에 따라 달라진
 
 ## 에러 처리
 
-- `.env` 파일 없음 또는 `NOTION_CV_PAGE_ID` 미설정: "`/ncv:setup`을 실행하여 초기 설정을 완료해 주세요." 출력
-- 페이지 접근 불가: "Notion Integration에 CV 페이지 접근 권한을 부여해 주세요. `/ncv:setup` 실행 시 안내를 확인할 수 있습니다." 출력
+- `.env` 파일 없음 또는 `NOTION_CV_PAGE_ID` 미설정: "`/notion-cv:setup`을 실행하여 초기 설정을 완료해 주세요." 출력
+- 페이지 접근 불가: "Notion Integration에 CV 페이지 접근 권한을 부여해 주세요. `/notion-cv:setup` 실행 시 안내를 확인할 수 있습니다." 출력
 - API 오류: 에러 메시지를 사용자에게 전달
