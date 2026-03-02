@@ -2,7 +2,7 @@
 name: update
 description: 사용자가 전달한 내용으로 Notion CV의 특정 섹션을 업데이트한다
 argument-hint: <업데이트할 내용 또는 섹션명>
-allowed-tools: mcp__notion__*
+allowed-tools: mcp__notion__*, Read
 ---
 
 # CV 업데이트
@@ -15,8 +15,8 @@ allowed-tools: mcp__notion__*
    - 대상 섹션 식별 (예: "경력에 새 회사 추가", "스킬에 Go 추가")
    - 업데이트 내용 추출
 
-2. 환경변수 `NOTION_CV_PAGE_ID`에서 CV 페이지 ID를 확인한다.
-   - 설정되지 않은 경우: "`NOTION_CV_PAGE_ID` 환경변수가 설정되지 않았습니다. `/ncv:setup`을 실행하여 설정 방법을 확인하세요." 출력 후 중단한다.
+2. `.env` 파일에서 `NOTION_CV_PAGE_ID` 값을 읽는다.
+   - `.env` 파일이 없거나 `NOTION_CV_PAGE_ID`가 없는 경우: "`.env` 파일에 `NOTION_CV_PAGE_ID`가 설정되지 않았습니다. `/ncv:setup`을 실행하여 초기 설정을 완료하세요." 출력 후 중단한다.
 
 3. Notion MCP를 통해 현재 CV 페이지의 블록을 조회한다.
    - `retrieve_block_children`로 전체 블록 목록을 가져온다.

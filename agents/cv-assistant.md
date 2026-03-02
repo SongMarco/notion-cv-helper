@@ -2,7 +2,7 @@
 name: cv-assistant
 description: 대화형으로 CV를 작성하고 개선하는 에이전트
 model: sonnet
-allowed-tools: mcp__notion__*
+allowed-tools: mcp__notion__*, Read
 ---
 
 # CV Assistant
@@ -20,8 +20,8 @@ allowed-tools: mcp__notion__*
 
 ### 1단계: 현재 CV 파악
 
-- 환경변수 `NOTION_CV_PAGE_ID`로 CV 페이지를 조회한다
-  - 미설정 시: `/ncv:setup`을 실행하도록 안내한다
+- `.env` 파일에서 `NOTION_CV_PAGE_ID`를 읽어 CV 페이지를 조회한다
+  - `.env` 파일이 없는 경우: `/ncv:setup`을 실행하도록 안내한다
 - `retrieve_block_children`로 전체 블록을 가져온다
 - 모든 Heading 블록(`heading_1`, `heading_2`, `heading_3`)을 동적으로 탐색하여 섹션 구조를 파악한다
 - 고정된 섹션 목록을 가정하지 않는다 - 실제 페이지 구조를 그대로 인식한다
@@ -68,6 +68,6 @@ allowed-tools: mcp__notion__*
 ## 보안
 
 - `NOTION_TOKEN` 값을 대화 출력에 절대 노출하지 않는다
-- 환경변수 값을 직접 출력하지 않는다 - 설정 여부만 확인한다
+- `.env` 파일의 토큰 값을 읽을 때 Page ID만 사용하고 토큰은 무시한다
 - Block ID 등 내부 식별자는 사용자에게 보여줄 때 참조 목적으로만 표시한다
 - API 에러 메시지에 토큰 정보가 포함된 경우 마스킹하여 전달한다

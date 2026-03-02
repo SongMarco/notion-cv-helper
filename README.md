@@ -24,18 +24,15 @@ git clone https://github.com/youngchansong/cv-helper.git
 claude --plugin-dir ./cv-helper
 ```
 
-## 환경변수 설정
+## 초기 설정
 
-shell profile (`~/.zshrc` 또는 `~/.bashrc`)에 다음을 추가한다:
+플러그인 설치 후 `/ncv:setup`으로 Notion 토큰과 CV 페이지를 설정한다:
 
-```bash
-export NOTION_TOKEN="ntn_your_token_here"
-export NOTION_CV_PAGE_ID="32자리_hex_page_id"
+```
+/ncv:setup NOTION_TOKEN=ntn_your_token_here NOTION_CV_PAGE_URL=https://www.notion.so/Your-CV-abc123def456
 ```
 
-설정 후 터미널을 재시작하거나 `source ~/.zshrc`를 실행한다.
-
-> `/ncv:setup`을 실행하면 환경변수 설정 상태를 검증하고 안내를 받을 수 있다.
+URL에서 Page ID를 자동 추출하여 `.env` 파일을 생성한다.
 
 ### Notion Integration 생성
 
@@ -49,26 +46,7 @@ export NOTION_CV_PAGE_ID="32자리_hex_page_id"
 1. Notion에서 CV 페이지를 연다
 2. 우측 상단 `...` 메뉴 > `Connections` > 생성한 Integration을 추가한다
 
-### CV 페이지 ID 확인
-
-Notion에서 CV 페이지 URL을 확인한다:
-
-```
-https://www.notion.so/Your-CV-Title-{32자리_hex}
-                                     ^^^^^^^^^^^^^^^^
-                                     이 부분이 NOTION_CV_PAGE_ID
-```
-
 ## 사용법
-
-### 환경변수 검증
-
-```
-/ncv:setup
-```
-
-환경변수가 올바르게 설정되었는지 확인하고, 미설정 시 설정 방법을 안내한다.
-Notion URL을 인자로 전달하면 Page ID를 자동 추출하여 표시한다.
 
 ### CV 조회
 
@@ -111,13 +89,8 @@ CV 페이지의 섹션 구조에 제약은 없다.
 
 이전 버전(`.claude/` 기반)에서 플러그인으로 전환하는 경우:
 
-1. **환경변수 이전**: `.env` 파일의 값을 shell profile로 옮긴다
-   ```bash
-   # ~/.zshrc 또는 ~/.bashrc에 추가
-   export NOTION_TOKEN="ntn_your_token_here"
-   export NOTION_CV_PAGE_ID="your_page_id_here"
-   ```
-2. **플러그인 설치**: 위 [설치](#설치) 섹션을 따른다
+1. **플러그인 설치**: 위 [설치](#설치) 섹션을 따른다
+2. **초기 설정 재실행**: `/ncv:setup`으로 토큰과 페이지 URL을 다시 설정한다
 3. **커맨드 변경**:
    | 이전 | 현재 |
    |------|------|
@@ -125,7 +98,7 @@ CV 페이지의 섹션 구조에 제약은 없다.
    | `/cv-read` | `/ncv:read` |
    | `/cv-update` | `/ncv:update` |
    | `cv-assistant` 에이전트 | `ncv:cv-assistant` 에이전트 |
-4. **기존 파일 정리**: `.claude/` 디렉토리와 `.env` 파일은 더 이상 필요하지 않다
+4. **기존 파일 정리**: `.claude/` 디렉토리는 더 이상 필요하지 않다
 
 ## 라이선스
 
