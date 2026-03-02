@@ -14,14 +14,18 @@ Notion에 작성된 CV(이력서)를 Claude Code에서 관리하는 플러그인
 ### 마켓플레이스에서 설치
 
 ```bash
-claude plugin install notion-cv --marketplace songmarco-plugins
+# 1. 마켓플레이스 등록
+/plugin marketplace add SongMarco/notion-cv-helper
+
+# 2. 플러그인 설치
+/plugin install notion-cv@songmarco-plugins
 ```
 
 ### 직접 설치 (개발자용)
 
 ```bash
-git clone https://github.com/youngchansong/cv-helper.git
-claude --plugin-dir ./cv-helper
+git clone https://github.com/SongMarco/notion-cv-helper.git
+claude --plugin-dir ./notion-cv-helper
 ```
 
 ## 초기 설정

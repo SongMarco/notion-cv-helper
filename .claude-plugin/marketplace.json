@@ -1,0 +1,25 @@
+{
+  "name": "songmarco-plugins",
+  "owner": {
+    "name": "SongMarco"
+  },
+  "metadata": {
+    "description": "SongMarco's Claude Code plugins",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "notion-cv",
+      "description": "Notion에 작성된 CV(이력서)를 Claude Code에서 관리하는 플러그인. 조회, 수정, 대화형 개선을 지원한다.",
+      "version": "1.0.0",
+      "source": "./",
+      "author": {
+        "name": "SongMarco"
+      },
+      "repository": "https://github.com/SongMarco/notion-cv-helper",
+      "license": "MIT",
+      "keywords": ["cv", "resume", "notion", "career"],
+      "category": "productivity"
+    }
+  ]
+}

@@ -4,9 +4,12 @@
   "description": "Notion에 작성된 CV(이력서)를 Claude Code에서 관리하는 플러그인. 조회, 수정, 대화형 개선을 지원한다.",
   "author": {
     "name": "SongMarco",
-    "url": "https://github.com/youngchansong"
+    "url": "https://github.com/SongMarco"
   },
-  "repository": "https://github.com/youngchansong/cv-helper",
+  "repository": "https://github.com/SongMarco/notion-cv-helper",
+  "homepage": "https://github.com/SongMarco/notion-cv-helper",
   "license": "MIT",
-  "keywords": ["cv", "resume", "notion", "career"]
+  "keywords": ["cv", "resume", "notion", "career"],
+  "skills": "./skills/",
+  "agents": "./agents/"
 }
