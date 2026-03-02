@@ -30,7 +30,7 @@ claude --plugin-dir ./cv-helper
 
 1. `/notion-cv:setup`으로 토큰과 CV 페이지를 설정한다:
    ```
-   /notion-cv:setup NOTION_TOKEN=ntn_your_token_here NOTION_CV_PAGE_URL=https://www.notion.so/Your-CV-abc123def456
+   /notion-cv:setup ntn_your_token_here https://www.notion.so/Your-CV-abc123def456
    ```
    Notion MCP 서버를 `claude mcp add`로 등록하고, Page ID를 `.env`에 저장한다.
 

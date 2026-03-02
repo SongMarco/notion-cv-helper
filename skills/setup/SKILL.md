@@ -1,7 +1,7 @@
 ---
 name: setup
 description: Notion 토큰과 CV 페이지 URL을 인자로 받아 MCP 서버를 등록하고 .env 파일을 생성한다
-argument-hint: NOTION_TOKEN=<토큰> NOTION_CV_PAGE_URL=<URL>
+argument-hint: <토큰> <CV 페이지 URL>
 allowed-tools: mcp__notion__*, Write, Read, Bash
 ---
 
@@ -12,12 +12,15 @@ allowed-tools: mcp__notion__*, Write, Read, Bash
 ## 사용법
 
 ```
-/notion-cv:setup NOTION_TOKEN=ntn_xxxxx NOTION_CV_PAGE_URL=https://www.notion.so/My-CV-abc123def456
+/notion-cv:setup ntn_xxxxx https://www.notion.so/My-CV-abc123def456
 ```
 
 ## 워크플로우
 
-1. `$ARGUMENTS`에서 `NOTION_TOKEN`과 `NOTION_CV_PAGE_URL` 값을 파싱한다.
+1. `$ARGUMENTS`에서 토큰과 URL을 파싱한다.
+   - `ntn_` 또는 `secret_`로 시작하는 값을 토큰으로 인식한다.
+   - `https://`로 시작하는 값 또는 32자 hex 문자열을 페이지 URL/ID로 인식한다.
+   - `NOTION_TOKEN=`, `NOTION_CV_PAGE_URL=` 접두사가 붙어 있으면 제거 후 값만 사용한다 (하위 호환).
    - 둘 중 하나라도 누락되면 사용법을 안내하고 중단한다.
 
 2. 입력값을 검증한다.
