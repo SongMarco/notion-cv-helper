@@ -7,7 +7,7 @@ Notion에 작성된 CV(이력서)를 Claude Code에서 조회, 수정, 대화형
 ### 1. 마켓플레이스 등록
 
 ```
-/plugin marketplace add SongMarco/notion-cv-helper
+/plugin marketplace add https://github.com/SongMarco/notion-cv-helper
 ```
 
 ### 2. 플러그인 설치
