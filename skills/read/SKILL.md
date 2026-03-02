@@ -14,10 +14,14 @@ Notion CV 페이지를 읽어 구조화된 형태로 표시한다.
    - `.env` 파일이 없거나 `NOTION_CV_PAGE_ID`가 없는 경우: "`.env` 파일에 `NOTION_CV_PAGE_ID`가 설정되지 않았습니다. `/notion-cv:setup`을 실행하여 초기 설정을 완료하세요." 출력 후 중단한다.
 
 2. Notion MCP를 통해 CV 페이지의 블록 목록을 조회한다.
-   - `retrieve_block_children` API로 페이지의 모든 블록을 가져온다.
-   - 중첩된 블록이 있으면 재귀적으로 하위 블록도 조회한다.
+   - `retrieve_block_children` API를 `page_size: 30`으로 호출한다.
+   - `has_more`가 `true`이면 `next_cursor`로 다음 페이지를 조회한다.
+   - 중첩된 블록(`has_children: true`)이 있으면 재귀적으로 하위 블록도 조회한다.
 
-3. 블록을 섹션별로 파싱한다.
+3. **MCP 응답을 즉시 파싱하여 마크다운으로 변환한다** (토큰 절약 필수).
+   - 각 블록에서 **type, id, rich_text의 plain_text**만 추출한다.
+   - parent, created_time, last_edited_time 등 불필요한 필드는 무시한다.
+   - **원본 JSON을 그대로 반복하거나 출력하지 않는다.**
    - 모든 Heading 블록(`heading_1`, `heading_2`, `heading_3`)을 섹션 구분자로 인식한다.
    - 고정된 섹션 목록에 의존하지 않는다 - 페이지에 존재하는 Heading을 그대로 섹션으로 취급한다.
    - 각 섹션의 **Heading 레벨, 제목, Block ID를 함께 기록**한다.

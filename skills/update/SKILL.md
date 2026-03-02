@@ -19,7 +19,9 @@ allowed-tools: mcp__notion__*, Read
    - `.env` 파일이 없거나 `NOTION_CV_PAGE_ID`가 없는 경우: "`.env` 파일에 `NOTION_CV_PAGE_ID`가 설정되지 않았습니다. `/notion-cv:setup`을 실행하여 초기 설정을 완료하세요." 출력 후 중단한다.
 
 3. Notion MCP를 통해 현재 CV 페이지의 블록을 조회한다.
-   - `retrieve_block_children`로 전체 블록 목록을 가져온다.
+   - `retrieve_block_children`를 `page_size: 30`으로 호출한다.
+   - `has_more`가 `true`이면 `next_cursor`로 다음 페이지를 조회한다.
+   - **MCP 응답에서 type, id, rich_text의 plain_text만 추출한다. 원본 JSON을 반복하지 않는다.**
    - 모든 Heading 블록(`heading_1`, `heading_2`, `heading_3`)을 섹션 구분자로 인식한다.
    - 고정된 섹션 목록에 의존하지 않는다 - 페이지에 존재하는 Heading을 그대로 사용한다.
    - 각 섹션의 Block ID를 파악한다.
