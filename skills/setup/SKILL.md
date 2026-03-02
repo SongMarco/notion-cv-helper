@@ -47,6 +47,7 @@ allowed-tools: mcp__notion__*, Write, Read
    - ".env 파일이 생성되었습니다."
    - "Notion에서 CV 페이지에 Integration 연결을 확인해 주세요."
      - 페이지 우측 상단 "..." > "Connections" > 생성한 Integration 추가
+   - "`claude --continue`로 세션을 이어가면 Notion 연결이 활성화됩니다."
    - "`/notion-cv:read`로 CV를 조회할 수 있습니다."
 
 ## Notion Integration 미생성 시 안내

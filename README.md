@@ -26,13 +26,17 @@ claude --plugin-dir ./cv-helper
 
 ## 초기 설정
 
-플러그인 설치 후 `/notion-cv:setup`으로 Notion 토큰과 CV 페이지를 설정한다:
+플러그인 설치 후 다음 순서로 설정한다:
 
-```
-/notion-cv:setup NOTION_TOKEN=ntn_your_token_here NOTION_CV_PAGE_URL=https://www.notion.so/Your-CV-abc123def456
-```
+1. `/notion-cv:setup`으로 토큰과 CV 페이지를 설정한다:
+   ```
+   /notion-cv:setup NOTION_TOKEN=ntn_your_token_here NOTION_CV_PAGE_URL=https://www.notion.so/Your-CV-abc123def456
+   ```
+   URL에서 Page ID를 자동 추출하여 `.env` 파일을 생성한다.
 
-URL에서 Page ID를 자동 추출하여 `.env` 파일을 생성한다.
+2. `claude --continue`로 세션을 재시작한다 (Notion MCP 서버 활성화).
+
+3. `/notion-cv:read`로 CV를 조회하여 동작을 확인한다.
 
 ### Notion Integration 생성
 

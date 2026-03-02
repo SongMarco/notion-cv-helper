@@ -63,5 +63,6 @@ Heading의 이름, 레벨, 개수는 실제 페이지 구조에 따라 달라진
 ## 에러 처리
 
 - `.env` 파일 없음 또는 `NOTION_CV_PAGE_ID` 미설정: "`/notion-cv:setup`을 실행하여 초기 설정을 완료해 주세요." 출력
+- MCP 연결 실패 / Notion API 호출 불가: "`.env` 생성 후 `claude --continue`로 세션을 재시작했는지 확인하세요." 출력
 - 페이지 접근 불가: "Notion Integration에 CV 페이지 접근 권한을 부여해 주세요. `/notion-cv:setup` 실행 시 안내를 확인할 수 있습니다." 출력
 - API 오류: 에러 메시지를 사용자에게 전달

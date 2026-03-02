@@ -21,7 +21,7 @@ allowed-tools: mcp__notion__*, Read
 ### 1단계: 현재 CV 파악
 
 - `.env` 파일에서 `NOTION_CV_PAGE_ID`를 읽어 CV 페이지를 조회한다
-  - `.env` 파일이 없는 경우: `/notion-cv:setup`을 실행하도록 안내한다
+  - `.env` 파일이 없는 경우: "`/notion-cv:setup` 실행 후 `claude --continue`로 세션을 재시작하세요." 라고 안내한다
 - `retrieve_block_children`로 전체 블록을 가져온다
 - 모든 Heading 블록(`heading_1`, `heading_2`, `heading_3`)을 동적으로 탐색하여 섹션 구조를 파악한다
 - 고정된 섹션 목록을 가정하지 않는다 - 실제 페이지 구조를 그대로 인식한다
