@@ -1,4 +1,4 @@
-# CV Helper
+# Notion CV Helper
 
 Claude Code의 Skill/Agent 체계와 Notion MCP를 활용하여 CV(이력서)를 관리하는 도구.
 
@@ -47,13 +47,13 @@ cp .env.example .env
 ### 5. 프로젝트 Clone
 
 ```bash
-git clone https://github.com/youngchansong/cv-helper.git
-cd cv-helper
+git clone https://github.com/youngchansong/notion-cv-helper.git
+cd notion-cv-helper
 ```
 
 ## 사용법
 
-`cv-helper` 디렉토리에서 Claude Code를 실행한다.
+`notion-cv-helper` 디렉토리에서 Claude Code를 실행한다.
 
 ### 초기 설정
 
@@ -104,7 +104,7 @@ Skill/Agent는 페이지 내 **모든 Heading 블록(H1/H2/H3)을 동적으로 �
 ## 기술 구조
 
 ```
-cv-helper/
+notion-cv-helper/
 ├── .claude/
 │   ├── CLAUDE.md                    # 프로젝트 지시사항
 │   ├── skills/
