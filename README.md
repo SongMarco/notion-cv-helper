@@ -19,7 +19,7 @@ Notion에 작성된 CV(이력서)를 Claude Code에서 조회, 수정, 대화형
 ### 3. 초기 설정
 
 ```
-/notion-cv-helper:setup ntn_your_token_here https://www.notion.so/Your-CV-abc123def456
+/notion-cv-setup ntn_your_token_here https://www.notion.so/Your-CV-abc123def456
 ```
 
 Notion MCP 서버를 등록하고, `claude --continue`로 세션을 재시작하면 바로 사용할 수 있다.
@@ -37,7 +37,7 @@ Notion MCP 서버를 등록하고, `claude --continue`로 세션을 재시작하
 ### CV 조회
 
 ```
-/notion-cv-helper:read
+/notion-cv-read
 ```
 
 Notion CV 페이지를 읽어 섹션별 구조화된 마크다운으로 출력한다.
@@ -45,15 +45,15 @@ Notion CV 페이지를 읽어 섹션별 구조화된 마크다운으로 출력�
 ### CV 업데이트
 
 ```
-/notion-cv-helper:update Skills 섹션에 Rust 추가
-/notion-cv-helper:update Work Experience에 새 회사 추가: Anthropic, 2025.01 - 현재, AI Engineer
+/notion-cv-update Skills 섹션에 Rust 추가
+/notion-cv-update Work Experience에 새 회사 추가: Anthropic, 2025.01 - 현재, AI Engineer
 ```
 
 특정 섹션을 대상으로 블록 단위 수정을 수행한다.
 
 ### CV Assistant 에이전트
 
-`notion-cv-helper:cv-assistant` 에이전트를 호출하면 대화형으로 CV를 개선할 수 있다.
+`notion-cv-assistant` 에이전트를 호출하면 대화형으로 CV를 개선할 수 있다.
 
 - 현재 CV를 분석하고 개선점을 제안
 - 질문을 통해 경력, 스킬, 프로젝트 정보를 수집

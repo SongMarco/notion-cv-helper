@@ -5,8 +5,8 @@
 ### 플러그인 전환 (v1.0.0)
 
 - [x] Claude Code 플러그인 포맷으로 전환
-- [x] `/notion-cv-helper:setup`, `/notion-cv-helper:read`, `/notion-cv-helper:update` 스킬 구현
-- [x] `notion-cv-helper:cv-assistant` 에이전트 구현
+- [x] `/notion-cv-setup`, `/notion-cv-read`, `/notion-cv-update` 스킬 구현
+- [x] `notion-cv-assistant` 에이전트 구현
 - [x] 환경변수 직접 참조 방식으로 MCP 설정 변경 (`.env` 의존 제거)
 - [x] Self-hosted 마켓플레이스 배포 구조 준비
 
@@ -21,7 +21,7 @@
 
 ### Phase 1: 내보내기
 
-- [ ] 마크다운 형식 내보내기 (`/notion-cv-helper:export md`)
+- [ ] 마크다운 형식 내보내기 (`/notion-cv-export md`)
 - [ ] PDF 내보내기 (Puppeteer 또는 외부 서비스 활용)
 - [ ] HTML 내보내기 (커스텀 템플릿 적용)
 
@@ -35,7 +35,7 @@
 ### Phase 3: 다국어 지원
 
 - [ ] 한국어/영어 CV 동시 관리
-- [ ] 번역 스킬 추가 (`/notion-cv-helper:translate`)
+- [ ] 번역 스킬 추가 (`/notion-cv-translate`)
 - [ ] 언어별 CV 페이지 자동 동기화
 
 ### Phase 4: 템플릿 시스템
