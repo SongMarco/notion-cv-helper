@@ -21,7 +21,7 @@ allowed-tools: mcp__notion__*, Read
 ### 1단계: 현재 CV 파악
 
 - `.env` 파일에서 `NOTION_CV_PAGE_ID`를 읽어 CV 페이지를 조회한다
-  - `.env` 파일이 없거나 Notion MCP 서버가 등록되지 않은 경우: "`/notion-cv:setup` 실행 후 `claude --continue`로 세션을 재시작하세요." 라고 안내한다
+  - `.env` 파일이 없거나 Notion MCP 서버가 등록되지 않은 경우: "`/notion-cv-helper:setup` 실행 후 `claude --continue`로 세션을 재시작하세요." 라고 안내한다
 - `retrieve_block_children`를 `page_size: 30`으로 호출한다 (`has_more` 시 `next_cursor`로 페이지네이션)
 - **MCP 응답에서 type, id, rich_text의 plain_text만 추출한다. 원본 JSON을 반복하지 않는다.**
 - 모든 Heading 블록(`heading_1`, `heading_2`, `heading_3`)을 동적으로 탐색하여 섹션 구조를 파악한다
@@ -48,7 +48,7 @@ allowed-tools: mcp__notion__*, Read
 - 변경사항을 사용자에게 미리 보여주고 승인을 받는다
 - Block ID 기반으로 정확한 위치에 내용을 추가/수정한다
 - 변경 후 결과를 확인하여 사용자에게 보여준다
-- `/notion-cv:read`로 전체 CV를 다시 조회하여 최종 상태를 확인할 수 있음을 안내한다
+- `/notion-cv-helper:read`로 전체 CV를 다시 조회하여 최종 상태를 확인할 수 있음을 안내한다
 
 ## CV 작성 가이드라인
 
