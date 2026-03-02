@@ -12,8 +12,27 @@ allowed-tools: mcp__notion__*, Read
 ## 워크플로우
 
 1. `$ARGUMENTS`에서 업데이트 요청을 파싱한다.
-   - 대상 섹션 식별 (예: "경력에 새 회사 추가", "스킬에 Go 추가")
-   - 업데이트 내용 추출
+   - 입력 형태에 따라 유연하게 처리한다:
+
+   **간단한 지시형:**
+   - "Skills 섹션에 Rust 추가" → 대상 섹션과 동작을 식별
+
+   **마크다운/텍스트 붙여넣기:**
+   - 사용자가 마크다운, 문단, 성과 목록 등을 그대로 붙여넣은 경우
+   - 내용에서 대상 섹션을 추론한다 (Heading이 포함되어 있으면 해당 섹션, 없으면 사용자에게 확인)
+   - 마크다운 서식(Heading, 볼드, 목록 등)을 Notion 블록 타입으로 변환한다:
+     - `## 제목` → `heading_2` 블록
+     - `### 소제목` → `heading_3` 블록
+     - `- 항목` → `bulleted_list_item` 블록
+     - `1. 항목` → `numbered_list_item` 블록
+     - `**볼드**` → bold annotation이 적용된 rich_text
+     - 일반 문단 → `paragraph` 블록
+
+   **비정형 텍스트 (경력, 성과 등):**
+   - 구조화되지 않은 텍스트가 입력되면 CV에 적합한 형태로 재구성한다
+   - 정량적 성과를 식별하여 강조한다 (예: "40% 단축" → **40% 단축**)
+   - 기술 스택을 분리하여 정리한다
+   - 재구성한 결과를 사용자에게 보여주고 승인을 받은 후 반영한다
 
 2. `.env` 파일에서 `NOTION_CV_PAGE_ID` 값을 읽는다.
    - `.env` 파일이 없거나 `NOTION_CV_PAGE_ID`가 없는 경우: "`.env` 파일에 `NOTION_CV_PAGE_ID`가 설정되지 않았습니다. `/notion-cv-setup`을 실행하여 초기 설정을 완료하세요." 출력 후 중단한다.
@@ -47,10 +66,29 @@ allowed-tools: mcp__notion__*, Read
 
 ## 사용 예시
 
+**간단한 지시:**
 ```
 /notion-cv-update Skills 섹션에 Rust 추가
-/notion-cv-update Work Experience에 새 회사 추가: Anthropic, 2025.01 - 현재, AI Engineer
 /notion-cv-update Summary를 "시니어 백엔드 개발자"로 수정
+```
+
+**마크다운 붙여넣기:**
+```
+/notion-cv-update 경력에 추가:
+
+### Anthropic (2025.01 - 현재)
+- **역할**: AI Engineer
+- Claude Code 플러그인 시스템 설계 및 구현
+- 플러그인 마켓플레이스 활성 사용자 300% 증가
+```
+
+**비정형 텍스트 붙여넣기:**
+```
+/notion-cv-update 경력에 추가해줘
+
+2023년부터 ABC회사에서 백엔드 개발자로 일함.
+API 응답시간 40% 단축, MAU 10만명 달성.
+Go, PostgreSQL, Redis, Kubernetes 사용.
 ```
 
 ## Block 조작 원칙

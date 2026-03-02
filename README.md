@@ -46,10 +46,18 @@ Notion CV 페이지를 읽어 섹션별 구조화된 마크다운으로 출력�
 
 ```
 /notion-cv-update Skills 섹션에 Rust 추가
-/notion-cv-update Work Experience에 새 회사 추가: Anthropic, 2025.01 - 현재, AI Engineer
 ```
 
-특정 섹션을 대상으로 블록 단위 수정을 수행한다.
+마크다운이나 비정형 텍스트를 그대로 붙여넣어도 CV에 맞게 변환한다:
+
+```
+/notion-cv-update 경력에 추가:
+
+### Anthropic (2025.01 - 현재)
+- AI Engineer
+- Claude Code 플러그인 시스템 설계 및 구현
+- 플러그인 마켓플레이스 활성 사용자 300% 증가
+```
 
 ### CV Assistant 에이전트
 
